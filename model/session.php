@@ -1,0 +1,11 @@
+<?php
+
+function load_session($T)
+{		
+	
+	$_SESSION['login'] =$T['login'];
+	$_SESSION['nom'] =$T['nom'];
+	$_SESSION['prenom'] =$T['prenom'];
+	$_SESSION['email'] =$T['email'];
+	$_SESSION['admin'] = $T['admin'];
+}
