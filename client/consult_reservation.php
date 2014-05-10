@@ -20,12 +20,30 @@ else
 		echo "Vous n'avez pas de reservation\n";
 	else
 	{	
-		echo "<pre>";
-		print_r($reservation);
-		echo "</pre>";
-		
-		
+?>
+		<table border=1>
+		<tr>
+		<th>N° Vol</th>
+		<th>depart</th>
+		<th>arrivé</th>
+		<th>date depart</th>
+		<th>date arrivée</th>
+		<th>nombre de place</th>
+		<th>etat reservation</th>
+
+		</tr>
+<?php
+		foreach($reservation as $row)
+		{
+			echo "<td>".$row[0]."</td><td>".$row[8]."</td><td>".$row[9]."</td><td>".$row[7]."</td><td>".$row[10]."</td>";
+			echo "<td>".$row[2]."</td><td>".$row[12]."</td>";// il manque l'incon de telechargement du fichier PDF.	
 			
+			
+	}
+		echo "</tr></table>";
+
+
+
 	}	
 }
 
