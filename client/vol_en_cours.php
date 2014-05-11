@@ -33,17 +33,21 @@ else
 		echo "<tr>";
 		echo "<td>".$row[0]."</td><td>".$row[4]."</td><td>".$row[5]."</td><td>".$row[6]."</td><td>".$row[9]."</td>";
 		echo "</tr>";
-		print_r($vol);
 	}
-
+	
 }
 ?>
-
-
-
-
 </table>
 
+<div id="description">
+<table border=1>
+<tr><th>Description</th><tr>
+<tr><td>en programme</td></tr>
+<tr><td>decollage</td></tr>
+<tr><td>atterrissage</td></tr>
+<tr><td>retard</td></tr>
+</table>
+<!--il manque les icons-->
 
 
 <aside><?php include_once "/opt/lampp/htdocs/www/aeroport/controller/aside.php"?></aside>
