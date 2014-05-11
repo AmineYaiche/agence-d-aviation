@@ -1,20 +1,26 @@
 <h1>Ceci est une baniaire</h1>
 <?php if( isset($_SESSION['admin']) && $_SESSION['admin'] == "oui") 
 {?><!--espace administration-->
-	<a href="/www/aeroport">Accueil</a>
-	<a href="/www/aeroport/admin/gestion-client.php">gestion des utilisateur</a>
-	<a href="/www/aeroport/admin/gestion-equip.php">gestion des equipage</a>
-	<a href="/www/aeroport/admin/gestion-avion.php">gestion des avions</a>
-	<a href="/www/aeroport/admin/gestion-vol.php">gestion des vols</a>
-	<a href="/www/aeroport/admin/gestion-reservation.php">gestion des reservation</a>
+	<header></header>
+	<ul>
+		<li><a href="/www/aeroport">Accueil</a></li>
+		<li><a href="/www/aeroport/admin/gestion-client.php">Gestion des utilisateur</a></li>
+		<li><a href="/www/aeroport/admin/gestion-equip.php">Gestion des equipage</a></li>
+		<li><a href="/www/aeroport/admin/gestion-avion.php">Gestion des avions</a></li>
+		<li><a href="/www/aeroport/admin/gestion-vol.php">Gestion des vols</a></li>
+		<li><a href="/www/aeroport/admin/gestion-reservation.php">Gestion des reservation</a></li>
+	</ul>
 <?php
 }
 else
 {
 ?><!--espace client-->
-	<a href="/www/aeroport">Accueil</a>
-	<a href="/www/aeroport/client/consult_reservation.php">consulter reservation</a>
-	<a href="/www/aeroport/client/vol_en_cours.php">vols en cours</a>
-	<a href="/www/aeroport/client/contact.php">contact</a>
+	<header></header>
+	<ul>
+ 		<li><a href="/www/aeroport">Accueil</a></li>
+		<li><a href="/www/aeroport/consult_reservation.php">Consulter reservation</a></li>
+ 		<li><a href="/www/aeroport/vol_en_cours.php">Vols en cours</a></li>
+	        <li><a href="/www/aeroport/vue/contact.html">Contact</a></li>
+	</ul>
 <?php
 }
