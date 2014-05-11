@@ -2,11 +2,11 @@
 <?php if( isset($_SESSION['admin']) && $_SESSION['admin'] == "oui") 
 {?><!--espace administration-->
 	<a href="/www/aeroport">Accueil</a>
-	<a href="/www/aeroport/admin/gestion-client.php">gestion des utilisateur</a>
-	<a href="/www/aeroport/admin/gestion-equip.php">gestion des equipage</a>
-	<a href="/www/aeroport/admin/gestion-avion.php">gestion des avions</a>
-	<a href="/www/aeroport/admin/gestion-vol.php">gestion des vols</a>
-	<a href="/www/aeroport/admin/gestion-reservation.php">gestion des reservation</a>
+	<a href="/www/aeroport/admin/gestion_client.php">gestion des utilisateur</a>
+	<a href="/www/aeroport/admin/gestion_equip.php">gestion des equipage</a>
+	<a href="/www/aeroport/admin/gestion_avion.php">gestion des avions</a>
+	<a href="/www/aeroport/admin/gestion_vol.php">gestion des vols</a>
+	<a href="/www/aeroport/admin/gestion_reservation.php">gestion des reservation</a>
 <?php
 }
 else
