@@ -4,6 +4,7 @@
 <head>
 	<title></title>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="CSS/style.css"/>
 
 </head>
 <body>

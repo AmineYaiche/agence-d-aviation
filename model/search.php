@@ -1,13 +1,13 @@
 <?php
 include_once "login_bd.php";
 
-function login_exist($table , $login , $pwd)
+function login_exist($table , $login , $pwd= NULL)
 {
-	$req = "SELECT login FROM ".$table." WHERE login = '".$login."' AND pwd = '".$pwd."'";
+	$req = "SELECT login FROM ".$table." WHERE login = '".$login."'";
+	if($pwd) $req =$req. "AND pwd = '".$pwd."'";
 	$req = mysql_query($req);
-
-	if(! mysql_fetch_row($req) ) return false;
-	return true;
+	if( mysql_fetch_row($req)) return true;
+	return false;
 }
 
 function fetch($login)
