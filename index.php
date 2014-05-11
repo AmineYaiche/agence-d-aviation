@@ -39,10 +39,10 @@
 	<label><input type="radio" name="type" value="retour" onClick="date_retour.disabled = false" checked/> aller retour </label>
 	<label><input type="radio" name="type" value="simple" onClick="date_retour.disabled = true" /> aller simple </label>
 	<br/>
-	<label> date aller : <input type="date" name="date_aller" required></label>
-	<label> date retour : <input type="date" name="date_retour" required/></label>
+	<label> date aller : <input type="date" name="date_aller" required/></label>
+	<label> date retour : <input type="date" name="date_retour" required /></label>
 	<br/>
-	<input type="submit" value="Rechercher"/>
+	<input type="submit" value="Rechercher"/><!-- envoie du donnée vers controller/recherche_vol.php-->
 
 </form>
 </article>

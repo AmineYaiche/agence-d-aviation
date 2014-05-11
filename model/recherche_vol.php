@@ -13,7 +13,7 @@ function vol_en_cours()
 function fetch_vol($dep , $dest ,$date_dep , $date_retour=null)
 {
 	$req1 = "SELECT * , DATE(date_depart) AS date_d FROM Vol WHERE place_restant >0 AND depart = '$dep' AND destination = '$dest'";
-	$req1 .= "AND date_d = '$date_dep';";
+	$req1 .= "AND DATE(date_depart) = '$date_dep';";
 	$req1 = mysql_query($req1);
 	if(! mysql_num_rows($req1)) return null;
 	$req2 = null;
