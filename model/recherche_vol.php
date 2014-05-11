@@ -19,7 +19,7 @@ function fetch_vol($dep , $dest ,$date_dep , $date_retour=null)
 	$req2 = null;
 	if($date_retour)
 	{
-		$req2 = "SELECT * FROM Vol WHERE place_restant > 0 AND depart = '$dest' AND destination = '$dep'";
+		$req2 = "SELECT *, DATE(date_depart) FROM Vol WHERE place_restant > 0 AND depart = '$dest' AND destination = '$dep'";
 		$req2.= "AND date_depart = '$date_retour';";
 		$req2 = mysql_query($req2);
 	}
