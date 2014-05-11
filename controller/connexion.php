@@ -1,7 +1,4 @@
 <?php
-
-
-
 session_start();
 include_once "../model/search.php";
 include_once "../model/session.php";
