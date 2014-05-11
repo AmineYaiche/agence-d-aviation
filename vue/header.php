@@ -18,9 +18,9 @@ else
 	<header></header>
 	<ul>
  		<li><a href="/www/aeroport">Accueil</a></li>
-		<li><a href="/www/aeroport/consult_reservation.php">Consulter reservation</a></li>
- 		<li><a href="/www/aeroport/vol_en_cours.php">Vols en cours</a></li>
-	        <li><a href="/www/aeroport/vue/contact.html">Contact</a></li>
+		<li><a href="/www/aeroport/client/consult_reservation.php">Consulter reservation</a></li>
+ 		<li><a href="/www/aeroport/client/vol_en_cours.php">Vols en cours</a></li>
+	        <li><a href="/www/aeroport/client/contact.html">Contact</a></li>
 	</ul>
 <?php
 }
