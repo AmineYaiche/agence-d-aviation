@@ -25,12 +25,18 @@
 	infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 <!-- google maps-->
 
+<h2>Laissez nous un message</h2>
 
-
-
-
-
-
+<form name="msg" method="POST" action="../controller/send_mail.php">
+	Nom* : <input type="text" name="nom" required/><br/>
+	Prenom* : <input type="text" name="prenom" required/><br/>
+	Email : <input type="email" name="email" required/><br/>
+	Sujet* : <input type="text" name="subject" required/><br/>
+	Votre message* : <br/>
+	<textarea name="msg"></textarea><br/>
+	<input type="submit" value="Envoyer"/>
+	<!-- il faut ajouter un captcha ici-->
+</form>
 
 <aside> <?php include_once "/opt/lampp/htdocs/www/aeroport/controller/aside.php" ?> </aside>
 
