@@ -9,3 +9,20 @@ function vol_en_cours()
 	return $req;
 }
 
+
+function fetch_vol($dep , $dest ,$date_dep , $date_retour=null)
+{
+	$req1 = "SELECT * , DATE(date_depart) AS date_d FROM Vol WHERE place_restant >0 AND depart = '$dep' AND destination = '$dest'";
+	$req1 .= "AND date_d = '$date_dep';";
+	$req1 = mysql_query($req1);
+	if(! mysql_num_rows($req1)) return null;
+	$req2 = null;
+	if($date_retour)
+	{
+		$req2 = "SELECT * FROM Vol WHERE place_restant > 0 AND depart = '$dest' AND destination = '$dep'";
+		$req2.= "AND date_depart = '$date_retour';";
+		$req2 = mysql_query($req2);
+	}
+	$req = array($req1 , $req2);
+	return $req;
+}
