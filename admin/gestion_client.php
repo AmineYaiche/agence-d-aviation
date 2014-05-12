@@ -1,8 +1,9 @@
-<php session_start();?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>welcome</title>
+	<meta charset="UTF-8"/>
 </head>
 <body>
 <?php
@@ -25,7 +26,7 @@ else
 <h2>liste des utilisateur</h2>
 
 
-<form action="../controller/delete_user.php" method="POST">
+<form action="../controller/delete_user.php" method="POST" onSubmit="return confirm('voulez-vous vraiment supprimer les utilisateur séléctionner?');">
 <table border=1>
 	<tr>
 		<th>Selectionner</th>
