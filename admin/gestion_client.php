@@ -57,7 +57,18 @@ else
 </form>
 <?php
 }
-
+?>
+<h2>Ajouter un utilisateur</h2>
+<form name="add_user" method="POST" action="../controller/add_user.php">
+	<label for=pseudo>pseudo : </label><input type=text name="pseudo" required/><br/>
+	<label for=name>nom : </label><input type="text" name="nom" required><br/>
+	<label for=prenom>prenom : </label><input type="text" name="prenom" required/><br/>
+	<label for=mdp>mot de passe : </label><input type="password" name="mdp" required/><br/>
+	<label for=mdp1>mot de passe : </label><input type="password" name="mdp1" required/><br/>
+	<label for=email>email : </label><input type="text" name="email" required/><br/>
+	<input type="submit" value="Valider"/>
+</form>
+<?php
 echo "<aside>"; include_once "../controller/aside.php"; echo "</aside>";
 echo "<footer>"; include_once "../vue/footer.html"; echo "</footer>";
 ?>
