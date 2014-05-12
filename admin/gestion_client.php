@@ -1,4 +1,4 @@
-<?php session_start();?>
+<php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +9,16 @@
 include_once "../vue/header.php";
 include_once "../model/search.php";
 
-$req = fetch_all_user();
-
+$req = (isset($_GET['page']))?fetch_users($_GET['page']):fetch_users(1);
 if(! mysql_num_rows($req) )
+{
 	echo "Pas d'utilisateur dans la base";
+	if(isset($_GET['page']) && $_GET['page'] >1)
+	{
+		$page = $_GET['page']-1;
+		header("location:gestion_client.php?page=$page");
+	}
+}
 else
 {
 ?>
@@ -25,7 +31,7 @@ else
 		<th>Selectionner</th>
 		<th>Pseudo</th>
 		<th>Nom</th>
-		<th><Prenom</th>
+		<th>Prenom</th>
 		<th>E-mail</th>
 	</tr>
 
@@ -41,6 +47,11 @@ else
 		</tr>";?>
 </table>
 	<input type="submit" value="Supprimer"><!-- il faut verifier si il a coché au moin un utilisateur a supprimer-->
+	<?php 
+	$pres = ( isset($_GET['page']) && $_GET['page']-1 >= 1)?$_GET['page']-1 :1;
+	$suiv = (isset($_GET['page']))?$_GET['page'] +1 : 2;
+	// il faut envisager une solution pour empéché une débordement de page.
+	echo "<a href='?page=$pres'> <= precedent</a> page ". $_GET['page']." <a href='?page=$suiv'>suivant =></a>";?>
 </form>
 <?php
 }

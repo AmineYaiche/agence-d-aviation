@@ -38,9 +38,11 @@ function fetch_reservation($login)
 	return $T;
 }
 
-function fetch_all_user()
+function fetch_users($page=NULL)
 {
+	$page = $page*5-5+1;
 	$req = "SELECT * FROM Utilisateur WHERE admin='non'";
+	if($page) $req .= " limit $page , 5;";
 	$req = mysql_query($req);
 	return $req;
 }
