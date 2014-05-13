@@ -40,9 +40,18 @@ function fetch_reservation($login)
 
 function fetch_users($page=NULL)
 {
-	$page = $page*5-5+1;
+	$page = ($page)?$page*5-5+1:0;
 	$req = "SELECT * FROM Utilisateur WHERE admin='non'";
 	if($page) $req .= " limit $page , 5;";
+	$req = mysql_query($req);
+	return $req;
+}
+
+function fetch_personnel($page=NULL)
+{
+	$page = ($page)?$page*5-5+1:0;
+	$req = "SELECT * FROM Personnel;";
+	if($page) $req .= "limit $page , 5;";
 	$req = mysql_query($req);
 	return $req;
 }
