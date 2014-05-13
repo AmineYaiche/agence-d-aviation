@@ -13,5 +13,14 @@ function verif()
 
 }
 
+var checked = true;
+function selectAll(n)
+{
+	for(var i = 1 ; i <= n ; i++)
+	{
+		var elem = document.getElementById(i);
+		elem.checked = checked;
+	}
+	checked = ! checked;
 
-
+}
