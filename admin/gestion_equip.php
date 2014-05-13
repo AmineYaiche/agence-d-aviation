@@ -4,6 +4,7 @@
 <head>
 	<title>welcom</title>
 	<meta charset="UTF-8"/>
+	<script src="../JS/formulaire.js"></script>
 <?php include_once "../model/search.php";?>
 </head>
 <body>
@@ -11,7 +12,7 @@
 <!-- liste des personnel-->
 <?php
 $req = fetch_personnel();
-if(!mysql_num_rows($req))
+if(!($n = mysql_num_rows($req)))
 	echo "Pas de personnel dans la base.<br/>";
 else
 {
@@ -20,7 +21,8 @@ else
 <form method="POST" action="../controller/delete_personnel.php">
 <table border=1>
 	<tr>
-		<th>Selectionner</th>
+		<th><label><input type="checkbox" onClick="selectAll(<?php echo $n; ?>)"/>
+		Selectionner</th>
 		<th>Identifiant</th>
 		<th>Nom</th>
 		<th>Prenom</th>
@@ -30,10 +32,10 @@ else
 		<th>Adresse</th>
 	</tr>
 <?php
-	while($row= mysql_fetch_assoc($req))
+	for($i = 1 ; $row= mysql_fetch_assoc($req) ;$i++)
 	{
 		echo "<tr><td>";
-		echo "<input type='checkbox' name='".$row['id_personnel']."'/></td>";
+		echo "<input type='checkbox' name='".$row['id_personnel']."'id=$i /></td>";
 		foreach($row as $elem)
 			echo "<td>$elem</td>";
 		echo "</tr>";

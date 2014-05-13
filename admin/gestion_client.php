@@ -31,7 +31,7 @@ else
 <form name="f" action="../controller/delete_user.php" method="POST" onSubmit="return confirm('voulez-vous vraiment supprimer les utilisateur séléctionner?');">
 <table border=1>
 	<tr>
-		<th><label><input type="checkbox" name="all" onClick="selectAll(<?php echo $n ?>)"/>
+		<th><label><input type="checkbox" onClick="selectAll(<?php echo $n ?>)"/>
 		Selectionner</label></th>
 		<th>Pseudo</th>
 		<th>Nom</th>
