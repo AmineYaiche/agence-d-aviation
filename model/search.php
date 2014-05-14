@@ -70,3 +70,11 @@ function getPersonnels($poste)
 	$req = mysql_query($req);
 	return $req;
 }
+
+function get_name($id)
+{
+	$req = "SELECT id_p , nom , prenom FROM Personnel WHERE id_p = '$id';";
+	$req = mysql_query($req);
+	$row = mysql_fetch_assoc($req);
+	return $row['id_p']."- ".$row['nom']." ".$row['prenom'];
+}

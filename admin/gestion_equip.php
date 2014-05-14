@@ -94,8 +94,10 @@ else
 	{
 		echo "<tr><td>";
 		echo "<input type='checkbox' name='".$row['id_eq']."'id=$i /></td>";
+		echo "<td>".$row['id_eq']."</td>";
+		unset($row['id_eq']);
 		foreach($row as $elem)
-			echo "<td>$elem</td>";
+			echo "<td>".get_name($elem)."</td>";
 		echo "</tr>";
 	}
 
