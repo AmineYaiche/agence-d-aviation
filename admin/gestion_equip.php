@@ -21,7 +21,7 @@ else
 <form method="POST" action="../controller/delete_personnel.php">
 <table border=1>
 	<tr>
-		<th><label><input type="checkbox" onClick="selectAll(<?php echo $n; ?>)"/>
+		<th><label><input type="checkbox" onClick="selectAll(1,<?php echo $n; ?>)"/>
 		Selectionner</th>
 		<th>Identifiant</th>
 		<th>Nom</th>
@@ -71,10 +71,17 @@ else
 <!--liste des equipe------>
 <h2>Liste des equipages</h2>
 <form name="list_equip" action="../controller/delete_equip.php" method="POST">
+<?php
+$req = fetch_equip();
+if(!($n = mysql_num_rows($req)))
+	echo "Pas d'equipe dans la base.<br/>";
+else
+{
+?>
 <table border=1 >
 <tr>
 	<th>
-	<input type="checkbox" name="all" />
+	<input type="checkbox" name="all" onClick='selectAll(11,<?php echo $n+10;?>)'/>
 	Selectionner</th>
 	<th>id equipage</th>
 	<th>pilote</th>
@@ -82,14 +89,8 @@ else
 	<th>stewart</th>
 	<th>hotesse</th>
 </tr>
-
 <?php
-	$req = fetch_equip();
-	if(!mysql_num_rows($req))
-		echo "Pas d'equipe dans la base.<br/>";
-	else
-	{
-	for($i = 1 ; $row= mysql_fetch_assoc($req) ;$i++)
+	for($i = 11 ; $row= mysql_fetch_assoc($req) ;$i++)
 	{
 		echo "<tr><td>";
 		echo "<input type='checkbox' name='".$row['id_eq']."'id=$i /></td>";
@@ -99,13 +100,10 @@ else
 	}
 
 ?>
-
-
-
 </table>
-
 <input type="submit" value="Supprimer"/>
-</form><?php }?>
+</form><?php 
+}?>
 <!--liste des equipe------>
 <!------------------------>
 <!--ajout d'une equipe  -->

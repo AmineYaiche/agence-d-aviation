@@ -12,15 +12,14 @@ function verif()
 	}
 
 }
-
 var checked = true;
-function selectAll(n)
+function selectAll(j,n)
 {
-	for(var i = 1 ; i <= n ; i++)
+	for(var i =j; i <= n ; i++)
 	{
 		var elem = document.getElementById(i);
 		elem.checked = checked;
 	}
-	checked = ! checked;
 
+	checked = !checked;
 }
