@@ -55,3 +55,18 @@ function fetch_personnel($page=NULL)
 	$req = mysql_query($req);
 	return $req;
 }
+
+function fetch_equip($page=NULL)
+{
+	$page = ($page)?$page*5-5+1 : 0;
+	$req = "SELECT *FROM Equipage;";
+	if($page)$req .= "limit $page , 5;";
+	$req = mysql_query($req);
+	return $req;
+}
+function getPersonnels($poste)
+{	
+	$req = "SELECT * FROM Personnel WHERE poste = '$poste';";
+	$req = mysql_query($req);
+	return $req;
+}

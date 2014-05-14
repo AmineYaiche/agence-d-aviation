@@ -35,7 +35,7 @@ else
 	for($i = 1 ; $row= mysql_fetch_assoc($req) ;$i++)
 	{
 		echo "<tr><td>";
-		echo "<input type='checkbox' name='".$row['id_personnel']."'id=$i /></td>";
+		echo "<input type='checkbox' name='".$row['id_p']."'id=$i /></td>";
 		foreach($row as $elem)
 			echo "<td>$elem</td>";
 		echo "</tr>";
@@ -67,7 +67,99 @@ else
 	<input type="submit" value="Valider"/>
 </form>
 <!--ajout d'un personnel-->
+<!------------------------>
+<!--liste des equipe------>
+<h2>Liste des equipages</h2>
+<form name="list_equip" action="../controller/delete_equip.php" method="POST">
+<table border=1 >
+<tr>
+	<th>
+	<input type="checkbox" name="all" />
+	Selectionner</th>
+	<th>id equipage</th>
+	<th>pilote</th>
+	<th>copilote</th>
+	<th>stewart</th>
+	<th>hotesse</th>
+</tr>
 
+<?php
+	$req = fetch_equip();
+	if(!mysql_num_rows($req))
+		echo "Pas d'equipe dans la base.<br/>";
+	else
+	{
+	for($i = 1 ; $row= mysql_fetch_assoc($req) ;$i++)
+	{
+		echo "<tr><td>";
+		echo "<input type='checkbox' name='".$row['id_eq']."'id=$i /></td>";
+		foreach($row as $elem)
+			echo "<td>$elem</td>";
+		echo "</tr>";
+	}
+
+?>
+
+
+
+</table>
+
+<input type="submit" value="Supprimer"/>
+</form><?php }?>
+<!--liste des equipe------>
+<!------------------------>
+<!--ajout d'une equipe  -->
+<h2>Ajout d'un equipe</h2>
+<form method="POST" action="../controller/add_equip.php">
+
+	Pilote : 
+	<select name="pilote">
+	<?php 
+		$req = getPersonnels("pilote");
+		while($row = mysql_fetch_assoc($req))
+		{
+			echo"<option value='".$row['id_p']."'>".$row['id_p'];
+			echo "- ".$row['nom']." ".$row['prenom'];
+		}	
+	?>
+	</select>
+	Copilote : 
+	<select name="copilote">
+	<?php 
+		$req = getPersonnels("copilote");
+		while($row = mysql_fetch_assoc($req))
+		{
+			echo"<option value='".$row['id_p']."'>".$row['id_p'];
+			echo "- ".$row['nom']." ".$row['prenom'];
+		}	
+	?>
+	</select>
+	stewart : 
+	<select name="stewart">
+	<?php 
+		$req = getPersonnels("stewart");
+		while($row = mysql_fetch_assoc($req))
+		{
+			echo"<option value='".$row['id_p']."'>".$row['id_p'];
+			echo "- ".$row['nom']." ".$row['prenom'];
+		}	
+	?>
+	</select>
+	hotesse : 
+	<select name="hotesse">
+	<?php 
+		$req = getPersonnels("hotesse");
+		while($row = mysql_fetch_assoc($req))
+		{
+			echo"<option value='".$row['id_p']."'>".$row['id_p'];
+			echo "- ".$row['nom']." ".$row['prenom'];
+		}	
+	?>
+	</select>
+	<input type="submit" value="valider"/>
+</form>
+
+<!--ajout d'une equipe  -->
 <aside><?php include_once "../controller/aside.php";?></aside>
 <footer><?php include_once "../vue/footer.html";?></footer>
 </body>
