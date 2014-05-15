@@ -11,9 +11,17 @@
 <header><?php include_once "../vue/header.php";?></header>
 <!-- liste des personnel-->
 <?php
-$req = fetch_personnel();
+
+$req = (isset($_GET['page_p']))?fetch_personnel($_GET['page_p']):fetch_personnel(1);
 if(!($n = mysql_num_rows($req)))
+{
 	echo "Pas de personnel dans la base.<br/>";
+	if(isset($_GET['page_p']))
+	{
+		$p = $_GET['page_p']-1;
+		header("location:gestion_equip.php?page_p=$p");
+	}
+}
 else
 {
 ?>
@@ -43,6 +51,12 @@ else
 }
 ?><table/>
 	<input type="submit" value="Suppprimer"/>
+<?php
+	$pres = (isset($_GET['page_p']) && $_GET['page_p']-1>=1)?$_GET['page_p']-1:1;
+	$suiv = (isset($_GET['page_p']))?$_GET['page_p']+1:2;
+	$page = (isset($_GET['page']))?$_GET['page_p']:1;
+	echo "<a href='?page_p=$pres'> <= precedent</a> page ".$page." <a href='?page_p=$suiv'>suivant => </a>";
+?>
 </form>
 <!-- liste des personnel-->
 <!------------------------>
