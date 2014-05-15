@@ -12,7 +12,7 @@
 <!-- liste des personnel-->
 <?php
 
-$req = (isset($_GET['page_p']))?fetch_personnel($_GET['page_p']):fetch_personnel(1);
+$req = (isset($_GET['page_p']))?fetch_personnel($_GET['page_p']):fetch_personnel(0);
 if(!($n = mysql_num_rows($req)))
 {
 	echo "Pas de personnel dans la base.<br/>";
@@ -86,9 +86,16 @@ else
 <h2>Liste des equipages</h2>
 <form name="list_equip" action="../controller/delete_equip.php" method="POST">
 <?php
-$req = fetch_equip();
+$req = (isset($_GET['page_eq']))?fetch_equip($_GET['page_eq']):fetch_equip(0);
 if(!($n = mysql_num_rows($req)))
+{
 	echo "Pas d'equipe dans la base.<br/>";
+	if(isset($_GET['page_eq']) && $_GET['page_eq'] > 1)
+	{
+		$page = $_GET['page_eq']-1;
+		header("location:gestion_equip.php?page_eq=$page");
+	}
+}
 else
 {
 ?>
@@ -114,10 +121,16 @@ else
 			echo "<td>".get_name($elem)."</td>";
 		echo "</tr>";
 	}
-
 ?>
 </table>
 <input type="submit" value="Supprimer"/>
+<?php
+	$pres = (isset($_GET['page_eq']) && $_GET['page_eq']-1>=1)?$_GET['page_eq']-1:1;
+	$suiv = (isset($_GET['page_eq']))?$_GET['page_eq']+1:2;
+	$page = (isset($_GET['page_eq']))?$_GET['page_eq']:1;
+	echo "<a href='?page_eq=$pres'> <= precedent</a> page ".$page." <a href='?page_eq=$suiv'>suivant => </a>";
+?>
+
 </form><?php 
 }?>
 <!--liste des equipe------>

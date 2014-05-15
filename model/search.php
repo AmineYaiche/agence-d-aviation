@@ -49,7 +49,7 @@ function fetch_users($page=NULL)
 
 function fetch_personnel($page=NULL)
 {
-	$page = ($page)?$page*5-5+1:0;
+	$page = ($page)?$page*5-5:0;
 	$req = "SELECT * FROM Personnel ";
 	if($page) $req .= "limit $page , 5;";
 	$req = mysql_query($req);
@@ -58,8 +58,8 @@ function fetch_personnel($page=NULL)
 
 function fetch_equip($page=NULL)
 {
-	$page = ($page)?$page*5-5+1 : 0;
-	$req = "SELECT *FROM Equipage;";
+	$page = ($page)?$page*5-5 : 0;
+	$req = "SELECT * FROM Equipage ";
 	if($page)$req .= "limit $page , 5;";
 	$req = mysql_query($req);
 	return $req;
