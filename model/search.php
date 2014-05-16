@@ -66,7 +66,11 @@ function fetch_equip($page=NULL)
 }
 function getPersonnels($poste)
 {	
-	$req = "SELECT * FROM Personnel WHERE poste = '$poste';";
+	$req = "SELECT id_p , nom ,prenom FROM Personnel p 
+	WHERE poste = '$poste'
+	AND (id_p) NOT IN (
+	SELECT id_p FROM Personnel p , Equipage e WHERE
+	id_p = $poste);";
 	$req = mysql_query($req);
 	return $req;
 }

@@ -54,7 +54,7 @@ else
 <?php
 	$pres = (isset($_GET['page_p']) && $_GET['page_p']-1>=1)?$_GET['page_p']-1:1;
 	$suiv = (isset($_GET['page_p']))?$_GET['page_p']+1:2;
-	$page = (isset($_GET['page']))?$_GET['page_p']:1;
+	$page = (isset($_GET['page_p']))?$_GET['page_p']:1;
 	echo "<a href='?page_p=$pres'> <= precedent</a> page ".$page." <a href='?page_p=$suiv'>suivant => </a>";
 ?>
 </form>
@@ -129,16 +129,12 @@ else
 	$suiv = (isset($_GET['page_eq']))?$_GET['page_eq']+1:2;
 	$page = (isset($_GET['page_eq']))?$_GET['page_eq']:1;
 	echo "<a href='?page_eq=$pres'> <= precedent</a> page ".$page." <a href='?page_eq=$suiv'>suivant => </a>";
-?>
-
-</form><?php 
-}?>
+}?></form>
 <!--liste des equipe------>
 <!------------------------>
 <!--ajout d'une equipe  -->
 <h2>Ajout d'un equipe</h2>
 <form method="POST" action="../controller/add_equip.php">
-
 	Pilote : 
 	<select name="pilote">
 	<?php 
