@@ -38,29 +38,38 @@ function fetch_reservation($login)
 	return $T;
 }
 
-function fetch_users($page=NULL)
+function fetch_users($page="all")
 {
-	$page = ($page)?$page*5-5+1:0;
 	$req = "SELECT * FROM Utilisateur WHERE admin='non'";
-	if($page) $req .= " limit $page , 5;";
+	if($page) 
+	{	
+		$page = ($page)?$page*5-5+1:0;
+		$req .= " limit $page , 5;";
+	}
 	$req = mysql_query($req);
 	return $req;
 }
 
-function fetch_personnel($page=NULL)
+function fetch_personnel($page="all")
 {
-	$page = ($page)?$page*5-5:0;
 	$req = "SELECT * FROM Personnel ";
-	if($page) $req .= "limit $page , 5;";
+	if($page!= "all") 
+	{
+		$page = ($page)?$page*5-5:0;
+		$req .= "limit $page , 5;";
+	}
 	$req = mysql_query($req);
 	return $req;
 }
 
 function fetch_equip($page=NULL)
 {
-	$page = ($page)?$page*5-5 : 0;
 	$req = "SELECT * FROM Equipage ";
-	if($page)$req .= "limit $page , 5;";
+	if($page)
+	{	
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
 	$req = mysql_query($req);
 	return $req;
 }
@@ -82,3 +91,25 @@ function get_name($id)
 	$row = mysql_fetch_assoc($req);
 	return $row['id_p']."- ".$row['nom']." ".$row['prenom'];
 }
+
+
+function fetch_avion($page="all")
+{
+	$req = "SELECT * FROM Avion ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+
+function id_exist($table , $id_name , $id)
+{
+	$req = "SELECT * FROM $table WHERE $id_name = '$id';";
+	$req = mysql_query($req);
+	return (mysql_num_rows($req)>0)?true:false;
+}
+
+

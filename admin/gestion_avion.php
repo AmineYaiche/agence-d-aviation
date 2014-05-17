@@ -9,41 +9,37 @@
 </head>
 <body>
 <header><?php include_once "../vue/header.php";?></header>
-<!-- liste des personnel-->
+<!-- liste des avion-->
 <?php
 
-$req = (isset($_GET['page_p']))?fetch_personnel($_GET['page_p']):fetch_personnel(1);
+$req = (isset($_GET['page']))?fetch_avion($_GET['page']):fetch_avion(1);
 if(!($n = mysql_num_rows($req)))
 {
-	echo "Pas de personnel dans la base.<br/>";
-	if(isset($_GET['page_p']))
+	echo "Pas d'avion dans la base.<br/>";
+	if(isset($_GET['page']))
 	{
-		$p = $_GET['page_p']-1;
-		header("location:gestion_equip.php?page_p=$p");
+		$p = $_GET['page']-1;
+		header("location:gestion_avion.php?page=$p");
 	}
 }
 else
 {
 ?>
-<h2>Liste des personnel</h2>
-<form method="POST" action="../controller/delete_personnel.php">
+<h2>Liste des avions</h2>
+<form method="POST" action="../controller/delete_avion.php">
 <table border=1>
 	<tr>
 		<th><label><input type="checkbox" onClick="selectAll(1,<?php echo $n; ?>)"/>
 		Selectionner</th>
 		<th>Identifiant</th>
-		<th>Nom</th>
-		<th>Prenom</th>
-		<th>Poste</th>
-		<th>Numéro de téléphone</th>
-		<th>E-mail</th>
-		<th>Adresse</th>
+		<th>Capacité</th>
+		<th>N° vol en cours</th>
 	</tr>
 <?php
 	for($i = 1 ; $row= mysql_fetch_assoc($req) ;$i++)
 	{
 		echo "<tr><td>";
-		echo "<input type='checkbox' name='".$row['id_p']."'id=$i /></td>";
+		echo "<input type='checkbox' name='".$row['id_av']."'id=$i /></td>";
 		foreach($row as $elem)
 			echo "<td>$elem</td>";
 		echo "</tr>";
@@ -52,38 +48,30 @@ else
 ?><table/>
 	<input type="submit" value="Suppprimer"/>
 <?php
-	$pres = (isset($_GET['page_p']) && $_GET['page_p']-1>=1)?$_GET['page_p']-1:1;
-	$suiv = (isset($_GET['page_p']))?$_GET['page_p']+1:2;
-	$page = (isset($_GET['page_p']))?$_GET['page_p']:1;
-	echo "<a href='?page_p=$pres'> <= precedent</a> page ".$page." <a href='?page_p=$suiv'>suivant => </a>";
+	$pres = (isset($_GET['page']) && $_GET['page']-1>=1)?$_GET['page']-1:1;
+	$suiv = (isset($_GET['page']))?$_GET['page']+1:2;
+	$page = (isset($_GET['page']))?$_GET['page']:1;
+	echo "<a href='?page=$pres'> <= precedent</a> page ".$page." <a href='?page=$suiv'>suivant => </a>";
 }?>
 </form>
-<!-- liste des personnel-->
-<!------------------------>
-<!--ajout d'un personnel-->
+<!-- liste des avions-->
+<!-------------------->
+<!--ajout d'un avion-->
 
-<h2>ajouter un personnel</h2>
+<h2>ajouter un avion</h2>
 
-<form method="POST" action="../controller/add_personnel.php">
+<form method="POST" action="../controller/add_plane.php">
 	
-	nom : <input type="text" name="nom" required/><br/>
-	prenom : <input type="text" name="prenom" required/><br/>
-	poste : <select name="poste">
-		<option value="pilote">pilote</option>
-		<option value="copilote">copilote</option>
-		<option value="stewart">stewart</option>
-		<option value="hotesse">hotesse</option>
-	</select><br/>
-
-	tel : <input type="text" name="tel" /><br/>
-	E-mail : <input type="email" name="email" /><br/>
-	adresse : <input type="text" name="adresse"/><br/>
+	Identifiant : <input type="text" name="id" required/><br/>
+	Capacité : <input type="text" name="cap" required/><br/>
+	vol en cours : <input type="text" name="vol_courant"/><!-- il faut remplacer ça par un menu select -->
+	<br/>
 	<input type="submit" value="Valider"/>
 </form>
-<!--ajout d'un personnel-->
-<!------------------------>
-<!--liste des equipe------>
-<h2>Liste des equipages</h2>
+<!----------ajout d'un avion------------->
+<!------------------------------------ -->
+<!--liste des vol fait par un avion------><?php /*
+<h2>Liste des vols effectué par l'avion : <?php //id avion ?></h2>
 <form name="list_equip" action="../controller/delete_equip.php" method="POST">
 <?php
 $req = (isset($_GET['page_eq']))?fetch_equip($_GET['page_eq']):fetch_equip(0);
@@ -130,7 +118,8 @@ else
 	$page = (isset($_GET['page_eq']))?$_GET['page_eq']:1;
 	echo "<a href='?page_eq=$pres'> <= precedent</a> page ".$page." <a href='?page_eq=$suiv'>suivant => </a>";
 }?></form>
-<!--liste des equipe------>
+
+<!--liste des vol fait par un avion------>
 <!------------------------>
 <!--ajout d'une equipe  -->
 <h2>Ajout d'un equipe</h2>
@@ -182,7 +171,7 @@ else
 	<input type="submit" value="valider"/>
 </form>
 
-<!--ajout d'une equipe  -->
+<!--ajout d'une equipe  --> */?>
 <aside><?php include_once "../controller/aside.php";?></aside>
 <footer><?php include_once "../vue/footer.html";?></footer>
 </body>
