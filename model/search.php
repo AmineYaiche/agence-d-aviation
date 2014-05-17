@@ -113,3 +113,17 @@ function id_exist($table , $id_name , $id)
 }
 
 
+function fetch_avion_vol($page="all")
+{
+	$av = $_GET['id_av'];
+	$req = "SELECT * FROM Vol WHERE id_avion = '$av' ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+
+

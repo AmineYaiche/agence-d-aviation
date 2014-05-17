@@ -86,7 +86,7 @@ else
 <h2>Liste des equipages</h2>
 <form name="list_equip" action="../controller/delete_equip.php" method="POST">
 <?php
-$req = (isset($_GET['page_eq']))?fetch_equip($_GET['page_eq']):fetch_equip(0);
+$req = (isset($_GET['page_eq']))?fetch_equip($_GET['page_eq']):fetch_equip(1);
 if(!($n = mysql_num_rows($req)))
 {
 	echo "Pas d'equipe dans la base.<br/>";
