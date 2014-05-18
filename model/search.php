@@ -138,3 +138,19 @@ function fetch_vol($page="all")
 	$req = mysql_query($req);
 	return $req;
 }
+
+
+
+function fetch_reserv($page="all")
+{
+	$req = "SELECT u.login,nom,prenom,v.id_vol,date_depart,depart,destination,place_restant ";
+	$req .= "FROM Vol v,Utilisateur u,Reservation r ";
+	$req .= "WHERE v.id_vol = r.id_vol AND u.login = r.login ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
