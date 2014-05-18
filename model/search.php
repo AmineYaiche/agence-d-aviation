@@ -127,3 +127,14 @@ function fetch_avion_vol($page="all")
 }
 
 
+function fetch_vol($page="all")
+{
+	$req = "SELECT * FROM Vol ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
