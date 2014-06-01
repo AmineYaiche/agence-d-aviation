@@ -38,9 +38,9 @@ function fetch_reservation($login)
 	return $T;
 }
 
-function fetch_users($page="all")
+function fetch_users($page="all")//retourner une requette contenant la liste des utilisateurs
 {
-	$req = "SELECT * FROM Utilisateur WHERE admin='non'";
+	$req = "SELECT login,nom,prenom,email FROM Utilisateur WHERE admin='non'";
 	if($page) 
 	{	
 		$page = ($page)?$page*5-5+1:0;

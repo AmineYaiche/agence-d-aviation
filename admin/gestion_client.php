@@ -41,16 +41,21 @@ else
 
 <?php
 	
-	for($i=1 ;$row = mysql_fetch_row($req) ;$i++)
-		echo "<tr><td>
-			<input type='checkbox' name='$row[0]' id=$i />
-			</td>
-			<td>$row[0]</td>
-			<td>$row[2]</td>
-			<td>$row[3]</td>
-			<td>$row[4]</td>
-		</tr>";?>
+	for($i=1 ;$row = mysql_fetch_assoc($req) ;$i++)
+	{
+		$login = $row["login"];
+		echo "<tr>";
+		echo "<td><input type='checkbox' name='$login'/></td>";
+		foreach($row as $cle=>$elem)
+		{
+			if($cle=="login")
+				echo "<td><a href='../client/espace_client.php?login=$login'>$elem</a></td>";
+			else
+				echo "<td>$elem</td>";
+		}
+	}
 
+?>
 </table>
 	<input type="submit" value="Supprimer"><!-- il faut verifier si il a coché au moin un utilisateur a supprimer-->
 	<?php 

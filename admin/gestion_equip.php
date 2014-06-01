@@ -29,7 +29,7 @@ else
 <form name="list_perso" method="POST" action="../controller/delete_personnel.php">
 <table border=1>
 	<tr>
-		<th><label><input type="checkbox" onClick="selectAll(list_perso)"/>
+		<th><label><input type="checkbox" name="all" onClick="selectAll(list_perso)"/>
 		Selectionner</th>
 		<th>Identifiant</th>
 		<th>Nom</th>
@@ -84,7 +84,6 @@ else
 <!------------------------>
 <!--liste des equipe------>
 <h2>Liste des equipages</h2>
-<form name="list_equip" action="../controller/delete_equip.php" method="POST">
 <?php
 $req = (isset($_GET['page_eq']))?fetch_equip($_GET['page_eq']):fetch_equip(1);
 if(!($n = mysql_num_rows($req)))
@@ -99,6 +98,7 @@ if(!($n = mysql_num_rows($req)))
 else
 {
 ?>
+<form name="list_equip" action="../controller/delete_equip.php" method="POST" id="x">
 <table border=1 >
 <tr>
 	<th>
