@@ -1,0 +1,55 @@
+header
+{background-image:url('cover2.png'); 
+margin-left:0%; margin-right:0%;
+margin-top:0%;
+width:98%;
+height:150px;
+}
+
+ul {
+ padding:0;
+ margin:0;
+ list-style-type:none;
+ margin-top:-5.2%;
+ margin-left:32%;
+ }
+li {
+ margin-left:2px;
+ float:left; 
+ }
+ul li a {
+ display:inline;
+ float:left;   
+ width:100px;
+ background-color:#6495ED;
+ color:black;
+ text-decoration:none;
+ text-align:center;
+ padding:5px;
+ border:2px solid;
+
+ border-color:#DCDCDC #696969 #696969 #DCDCDC;
+ }
+ul li a:hover {
+ background-color:#b92927;
+ border-color:#696969 #DCDCDC #DCDCDC #696969;
+ } 
+div#reservation {
+	width:600px;
+	height:50px;
+margin-left:10%;
+	}
+div#aside{
+	width:600px;
+	height:60px;
+	margin-left:60%;
+	margin-top:-5%;
+
+}
+footer{
+margin-top:20%;
+margin-left:0%; margin-right:0%;
+background-image:url('footer.png');	
+width:98%;
+height:150px;
+}

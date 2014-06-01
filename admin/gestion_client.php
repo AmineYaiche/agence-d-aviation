@@ -31,7 +31,7 @@ else
 <form name="f" action="../controller/delete_user.php" method="POST" onSubmit="return confirm('voulez-vous vraiment supprimer les utilisateur séléctionner?');">
 <table border=1>
 	<tr>
-		<th><label><input type="checkbox" onClick="selectAll(<?php echo $n ?>)"/>
+		<th><label><input type="checkbox" name="all" onClick="selectAll(f)"/>
 		Selectionner</label></th>
 		<th>Pseudo</th>
 		<th>Nom</th>
@@ -58,7 +58,7 @@ else
 	$suiv = (isset($_GET['page']))?$_GET['page'] +1 : 2;
 	$page = (isset($_GET['page']))?$_GET['page']:1;
 	echo "<a href='?page=$pres'> <= precedent</a> page ". $page." <a href='?page=$suiv'>suivant =></a>";?>
-a</form>
+</form>
 <?php
 }
 ?>

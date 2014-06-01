@@ -12,19 +12,12 @@ function verif()
 	}
 
 }
-var checked = true;
-function selectAll(j,n)
-{
-	for(var i =j; i <= n ; i++)
-	{
-		var elem = document.getElementById(i);
-		elem.checked = checked;
-	}
+function selectAll(form)//permet de selectionner tout les checkbox d'un formulatire
+{alert();
+	var elements = form.getElementsByTagName('input');
+	for(var i =0; i < elements.length ; i++)
+		if(elements[i].type == "checkbox" )
+			elements[i].checked = form.all.checked;
 
-	checked = !checked;
 }
 
-function f()
-{
-	alert();	
-}

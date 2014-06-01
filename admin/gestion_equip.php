@@ -26,10 +26,10 @@ else
 {
 ?>
 <h2>Liste des personnel</h2>
-<form method="POST" action="../controller/delete_personnel.php">
+<form name="list_perso" method="POST" action="../controller/delete_personnel.php">
 <table border=1>
 	<tr>
-		<th><label><input type="checkbox" onClick="selectAll(1,<?php echo $n; ?>)"/>
+		<th><label><input type="checkbox" onClick="selectAll(list_perso)"/>
 		Selectionner</th>
 		<th>Identifiant</th>
 		<th>Nom</th>
@@ -102,7 +102,7 @@ else
 <table border=1 >
 <tr>
 	<th>
-	<input type="checkbox" name="all" onClick='selectAll(11,<?php echo $n+10;?>)'/>
+	<input type="checkbox" name="all" onClick='selectAll(list_equip)'/>
 	Selectionner</th>
 	<th>id equipage</th>
 	<th>pilote</th>
