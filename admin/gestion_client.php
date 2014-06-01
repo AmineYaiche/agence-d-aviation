@@ -58,7 +58,7 @@ else
 	$suiv = (isset($_GET['page']))?$_GET['page'] +1 : 2;
 	$page = (isset($_GET['page']))?$_GET['page']:1;
 	echo "<a href='?page=$pres'> <= precedent</a> page ". $page." <a href='?page=$suiv'>suivant =></a>";?>
-</form>
+a</form>
 <?php
 }
 ?>

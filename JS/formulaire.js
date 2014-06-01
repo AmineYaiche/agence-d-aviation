@@ -23,3 +23,8 @@ function selectAll(j,n)
 
 	checked = !checked;
 }
+
+function f()
+{
+	alert();	
+}

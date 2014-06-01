@@ -127,7 +127,7 @@ function fetch_avion_vol($page="all")
 }
 
 
-function fetch_vol($page="all")
+function fetch_all_vol($page="all")
 {
 	$req = "SELECT * FROM Vol ";
 	if($page)

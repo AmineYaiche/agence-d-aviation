@@ -11,7 +11,7 @@
 <header><?php include_once "../vue/header.php";?></header>
 <!-- liste des vols-->
 <?php
-$req = (isset($_GET['page']))?fetch_vol($_GET['page']):fetch_vol(1);
+$req = (isset($_GET['page']))?fetch_all_vol($_GET['page']):fetch_all_vol(1);
 if(!($n = mysql_num_rows($req)))
 {
 	echo "Pas de vol dans la base.<br/>";
