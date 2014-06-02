@@ -38,9 +38,119 @@ function fetch_reservation($login)
 	return $T;
 }
 
-function fetch_all_user()
+function fetch_users($page="all")//retourner une requette contenant la liste des utilisateurs
 {
-	$req = "SELECT * FROM Utilisateur WHERE admin='non'";
+	$req = "SELECT login,nom,prenom,email FROM Utilisateur WHERE admin='non'";
+	if($page) 
+	{	
+		$page = ($page)?$page*5-5+1:0;
+		$req .= " limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+
+function fetch_personnel($page="all")
+{
+	$req = "SELECT * FROM Personnel ";
+	if($page!= "all") 
+	{
+		$page = ($page)?$page*5-5:0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+
+function fetch_equip($page=NULL)
+{
+	$req = "SELECT * FROM Equipage ";
+	if($page)
+	{	
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+function getPersonnels($poste)
+{	
+	$req = "SELECT id_p , nom ,prenom FROM Personnel p 
+	WHERE poste = '$poste'
+	AND (id_p) NOT IN (
+	SELECT id_p FROM Personnel p , Equipage e WHERE
+	id_p = $poste);";
+	$req = mysql_query($req);
+	return $req;
+}
+
+function get_name($id)
+{
+	$req = "SELECT id_p , nom , prenom FROM Personnel WHERE id_p = '$id';";
+	$req = mysql_query($req);
+	$row = mysql_fetch_assoc($req);
+	return $row['id_p']."- ".$row['nom']." ".$row['prenom'];
+}
+
+
+function fetch_avion($page="all")
+{
+	$req = "SELECT * FROM Avion ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+
+function id_exist($table , $id_name , $id)
+{
+	$req = "SELECT * FROM $table WHERE $id_name = '$id';";
+	$req = mysql_query($req);
+	return (mysql_num_rows($req)>0)?true:false;
+}
+
+
+function fetch_avion_vol($page="all")
+{
+	$av = $_GET['id_av'];
+	$req = "SELECT * FROM Vol WHERE id_avion = '$av' ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+
+
+function fetch_all_vol($page="all")
+{
+	$req = "SELECT * FROM Vol ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
+	$req = mysql_query($req);
+	return $req;
+}
+
+
+
+function fetch_reserv($page="all")
+{
+	$req = "SELECT u.login,nom,prenom,v.id_vol,date_depart,depart,destination,place_restant ";
+	$req .= "FROM Vol v,Utilisateur u,Reservation r ";
+	$req .= "WHERE v.id_vol = r.id_vol AND u.login = r.login ";
+	if($page)
+	{
+		$page = ($page)?$page*5-5 : 0;
+		$req .= "limit $page , 5;";
+	}
 	$req = mysql_query($req);
 	return $req;
 }

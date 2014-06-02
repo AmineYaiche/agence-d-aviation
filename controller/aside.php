@@ -16,7 +16,7 @@ else
 	}
 
 	echo "Bonjour ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . "\n <a href='/www/aeroport/controller/logout.php'> deconnexion</a>";
-	echo "<a href='client/espace_client.php'>espace client</a>";
+	echo "<a href='/www/aeroport/client/espace_client.php'>espace client</a>";
 }
 	
 	
