@@ -20,12 +20,14 @@ else
 <h2>Modifier les information</h2>
 
 <form method="POST" action="../controller/espace_client.php">
+Login : <br/><input type="text" name="newLogin" /><br/>
 Nom : <br/><input type="text" name="nom"/><br/>
 Prenom : <br/><input type="text" name="prenom" /><br/>
 mot de passe actuel:*<br/> <input type="password" name="mdp" required/><br/>
 Nouveau mot de passe :<br/> <input type="password" name="newMdp1" /><br/>
 Nouveau mot de passe : <br/><input type="password" name="newMdp2"/><br/>
 Nouveau E-mail : <br/><input type="email" name="email"/><br/>
+<input type="hidden" name="login" value='<?php echo"$login";?>'/>
 <input type="submit" value="Valider"/>
 <br/>
 PS: les champs non rempli serons conserver.
